@@ -1,5 +1,3 @@
-const Dinosaur = require('./dinosaur.js');
-
 const Park = function (name, price, dinosaurs) {
   this.name = name;
   this.price = price;
@@ -68,22 +66,25 @@ Park.prototype.totalRevenue = function(){
 
 Park.prototype.dinosaurDiet = function(){
 
+
   let dietCounter = {};
-  total = 0;
+  let total = 0;
+
   for (let dinosaur of this.dinosaurs) {
     dietCounter[dinosaur.diet] = total;
-    for (var key in dietCounter) {
-      if (key === dinosaur.diet) {
-        dietCounter[dinosaur.diet] = total += 1;
-      };
-    };
 
-
-    // if (dietCounter.includes(dinosaur.diet)){
-    //    total += 1;
-    // };
   };
-  return dietCounter
+  return dietCounter;
+
+  // let total = 0;
+  // let dietCounter = {};
+  // for (let i = 0; i < this.dinosaurs.length; i++) {
+  //   let dinosaur = this.dinosaurs[i];
+  //   dietCounter[dinosaur.diet] = total += 1;
+  // }
+  //
+  // return dietCounter;
+  // return this.dinosaurs
 
   // let foundDiet = [];
   // for (let dinosaur of this.dinosaurs) {
@@ -114,18 +115,6 @@ Park.prototype.dinosaurDiet = function(){
 
 
 };
-
-// Park.prototype.findBySpecies = function(species){
-//   let foundDinosaurs = [];
-//
-//   for (let dinosaur of this.dinosaurs) {
-//     if (dinosaur.species === species){
-//       foundDinosaurs.push(dinosaur);
-//     };
-//   };
-//
-//   return foundDinosaurs;
-// };
 
 
 
