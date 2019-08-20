@@ -7,7 +7,15 @@ describe('Park', function() {
   let park;
 
   beforeEach(function () {
-    park = new Park()
+    dinosaur1 = new Dinosaur('Pterodactyl', 'herbivore', 20);
+    dinosaur2 = new Dinosaur('T-rex', 'carnivore', 100);
+    dinosaur3 = new Dinosaur('Triceratops', 'omnivore', 20);
+
+    dinosaurs = [dinosaur1, dinosaur2, dinosaur3];
+
+    park = new Park('Dinoland', 5, dinosaurs);
+
+
   })
 
   it('should have a name');
