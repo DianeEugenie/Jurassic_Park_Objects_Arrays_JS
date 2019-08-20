@@ -16,18 +16,27 @@ Park.prototype.removeDinosaur = function(dinosaur){
 };
 
 Park.prototype.mostPopular = function(){
-  let popularDinosaur = this.dinosaurs[0]
+  let popularDinosaur = this.dinosaurs[0];
 
   for (dinosaur of this.dinosaurs) {
-    if (dinosaur.guestsAttractedPerDay > popularDinosaur.guestsAttractedPerDay)
+    if (dinosaur.guestsAttractedPerDay > popularDinosaur.guestsAttractedPerDay) {
       popularDinosaur = dinosaur;
+    };
   }
   return popularDinosaur;
 };
 
-// Park.prototype.methodName = function () {
-//
-// };
+Park.prototype.findBySpecies = function(species){
+  let foundDinosaurs = [];
+
+  for (let dinosaur of this.dinosaurs) {
+    if (dinosaur.species === species){
+      foundDinosaurs.push(dinosaur);
+    };
+  };
+
+  return foundDinosaurs;
+};
 
 
 
