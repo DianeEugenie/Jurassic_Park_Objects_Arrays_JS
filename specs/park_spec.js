@@ -83,6 +83,9 @@ describe('Park', function() {
     assert.strictEqual(actual, (140*350));
   });
 
-  it('should be able to calculate total revenue from ticket sales for one year');
+  it('should be able to calculate total revenue from ticket sales for one year',function(){
+    const actual = park.totalRevenue();
+    assert.strictEqual(actual, (140*350*5));
+  });
 
 });
