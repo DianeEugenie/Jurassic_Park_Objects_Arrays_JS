@@ -10,6 +10,7 @@ describe('Park', function() {
     dinosaur1 = new Dinosaur('Pterodactyl', 'herbivore', 20);
     dinosaur2 = new Dinosaur('T-rex', 'carnivore', 100);
     dinosaur3 = new Dinosaur('Triceratops', 'omnivore', 20);
+    dinosaur4 = new Dinosaur('Diplodocus', 'herbivore', 75);
 
     dinosaurs_array = [dinosaur1, dinosaur2, dinosaur3];
 
@@ -34,7 +35,14 @@ describe('Park', function() {
     assert.deepStrictEqual(actual, dinosaurs_array)
   });
 
-  it('should be able to add a dinosaur to its collection');
+  it('should be able to add a dinosaur to its collection', function(){
+    //ACT
+    park.addDinosaur(dinosaur4);
+    //ASSERT
+    const actual = park.dinosaurs;
+    assert.strictEqual(actual.length, 4);
+    assert.deepStrictEqual(actual, dinosaurs_array)
+  });
 
   it('should be able to remove a dinosaur from its collection');
 
