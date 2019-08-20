@@ -53,7 +53,7 @@ Park.prototype.countVisitorsPerDay = function(){
   let guests = 0
   for (let dinosaur of this.dinosaurs) {
     guests += dinosaur.guestsAttractedPerDay;
-  }
+  };
 
   return guests
 };
@@ -65,6 +65,67 @@ Park.prototype.countVisitorsPerYear = function(){
 Park.prototype.totalRevenue = function(){
   return this.countVisitorsPerYear() * this.price;
 };
+
+Park.prototype.dinosaurDiet = function(){
+
+  let dietCounter = {};
+  total = 0;
+  for (let dinosaur of this.dinosaurs) {
+    dietCounter[dinosaur.diet] = total;
+    for (var key in dietCounter) {
+      if (key === dinosaur.diet) {
+        dietCounter[dinosaur.diet] = total += 1;
+      };
+    };
+
+
+    // if (dietCounter.includes(dinosaur.diet)){
+    //    total += 1;
+    // };
+  };
+  return dietCounter
+
+  // let foundDiet = [];
+  // for (let dinosaur of this.dinosaurs) {
+  //   foundDiet.push(dinosaur.diet)
+  // };
+  // let allFoundDiets = foundDiet;
+  //
+  // // return allFoundDiets;
+  //
+  // let dietCounter = {}
+  // let total = 0
+  // for (let dietFound of allFoundDiets) {
+  //   dietCounter[dietFound] = total +=1;
+  //
+  // }
+  //
+  // return dietCounter;
+  //
+  // {
+  //   -  "carnivore": 2
+  //   -  "herbivore": 5
+  //   -  "omnivore": 3
+  //   +  "carnivore": 1
+  //   +  "herbivore": 3
+  //   +  "omnivore": 1
+  // }
+  //
+
+
+};
+
+// Park.prototype.findBySpecies = function(species){
+//   let foundDinosaurs = [];
+//
+//   for (let dinosaur of this.dinosaurs) {
+//     if (dinosaur.species === species){
+//       foundDinosaurs.push(dinosaur);
+//     };
+//   };
+//
+//   return foundDinosaurs;
+// };
 
 
 

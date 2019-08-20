@@ -83,9 +83,21 @@ describe('Park', function() {
     assert.strictEqual(actual, (140*350));
   });
 
-  it('should be able to calculate total revenue from ticket sales for one year',function(){
+  it('should be able to calculate total revenue from ticket sales for one year', function(){
     const actual = park.totalRevenue();
     assert.strictEqual(actual, (140*350*5));
   });
 
+  it('should be able to provide the number of dinosaurs with their specific diet types', function(){
+    park.addDinosaur(dinosaur4);
+    park.addDinosaur(dinosaur5);
+    const actual = park.dinosaurDiet();
+    assert.deepStrictEqual(actual, {'herbivore': 3, 'carnivore': 1, 'omnivore': 1 });
+  });
+
 });
+
+
+//
+// Provide an object containing each of the diet types and the number of dinosaurs in the park of that diet type
+// Example: { 'carnivore': 5, 'herbivore': 2, 'omnivore': 1 }
