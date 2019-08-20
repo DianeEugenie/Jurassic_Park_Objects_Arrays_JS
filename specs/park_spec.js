@@ -11,14 +11,17 @@ describe('Park', function() {
     dinosaur2 = new Dinosaur('T-rex', 'carnivore', 100);
     dinosaur3 = new Dinosaur('Triceratops', 'omnivore', 20);
 
-    dinosaurs = [dinosaur1, dinosaur2, dinosaur3];
+    dinosaurs_array = [dinosaur1, dinosaur2, dinosaur3];
 
-    park = new Park('Dinoland', 5, dinosaurs);
+    park = new Park('Dinoland', 5, dinosaurs_array);
 
 
-  })
+  });
 
-  it('should have a name');
+  it('should have a name', function(){
+    const actual = park.name;
+    assert.strictEqual(actual, 'Dinoland')
+  });
 
   it('should have a ticket price');
 
