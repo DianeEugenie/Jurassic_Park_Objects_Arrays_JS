@@ -49,6 +49,15 @@ Park.prototype.removeBySpecies = function(species){
   return this.dinosaurs;
 };
 
+Park.prototype.countVisitorsPerDay = function(){
+  guests = 0
+  for (let dinosaur of this.dinosaurs) {
+    guests += dinosaur.guestsAttractedPerDay;
+  }
+
+  return guests
+};
+
 
 
 module.exports = Park;
