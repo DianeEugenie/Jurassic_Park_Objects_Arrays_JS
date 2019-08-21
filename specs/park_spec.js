@@ -13,9 +13,7 @@ describe('Park', function() {
     dinosaur4 = new Dinosaur('Diplodocus', 'herbivore', 75);
     dinosaur5 = new Dinosaur('Pterodactyl', 'herbivore', 50);
 
-    dinosaurs_array = [dinosaur1, dinosaur2, dinosaur3];
-
-    park = new Park('Dinoland', 5, dinosaurs_array);
+    park = new Park('Dinoland', 5);
 
 
   });
@@ -32,21 +30,25 @@ describe('Park', function() {
 
   it('should have a collection of dinosaurs', function(){
     const actual = park.dinosaurs;
-    assert.strictEqual(actual.length, 3);
-    assert.deepStrictEqual(actual, dinosaurs_array)
+    assert.strictEqual(actual.length, 0);
   });
 
   it('should be able to add a dinosaur to its collection', function(){
     //ACT
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
     park.addDinosaur(dinosaur4);
     //ASSERT
     const actual = park.dinosaurs;
     assert.strictEqual(actual.length, 4);
-    assert.deepStrictEqual(actual, dinosaurs_array)
   });
 
   it('should be able to remove a dinosaur from its collection', function(){
     //ACT
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
     park.removeDinosaur(dinosaur2);
     //ASSERT
     const actual = park.dinosaurs;
@@ -54,11 +56,20 @@ describe('Park', function() {
   });
 
   it('should be able to find the dinosaur that attracts the most visitors', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
+    park.addDinosaur(dinosaur4);
+    park.addDinosaur(dinosaur5);
     const actual = park.mostPopular();
     assert.deepStrictEqual(actual, dinosaur2);
   });
 
   it('should be able to find all dinosaurs of a particular species', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
+    park.addDinosaur(dinosaur4);
     park.addDinosaur(dinosaur5);
     const actual = park.findBySpecies('Pterodactyl');
     assert.strictEqual(actual.length, 2);
@@ -66,29 +77,44 @@ describe('Park', function() {
   });
 
   it('should be able to remove all dinosaurs of a particular species', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
     park.addDinosaur(dinosaur4);
     park.addDinosaur(dinosaur5);
-    const actual = park.removeBySpecies('Pterodactyl');
-    assert.strictEqual(actual.length, 3);
-    assert.deepStrictEqual(actual, [dinosaur2, dinosaur3, dinosaur4]);
+    park.removeBySpecies('Pterodactyl')
+    const actual = park.findBySpecies('Pterodactyl');
+    assert.deepStrictEqual(actual, []);
   });
 
   it('should be able to calculate total number of visitors per day', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
     const actual = park.countVisitorsPerDay();
     assert.strictEqual(actual, 140);
   });
 
   it('should be able to calculate total number of visitors per year', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
     const actual = park.countVisitorsPerYear();
     assert.strictEqual(actual, (140*350));
   });
 
   it('should be able to calculate total revenue from ticket sales for one year', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
     const actual = park.totalRevenue();
     assert.strictEqual(actual, (140*350*5));
   });
 
   it('should be able to provide the number of dinosaurs with their specific diet types', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
     park.addDinosaur(dinosaur4);
     park.addDinosaur(dinosaur5);
     const actual = park.dinosaurDiet();

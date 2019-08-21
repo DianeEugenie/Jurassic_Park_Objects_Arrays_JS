@@ -1,7 +1,7 @@
-const Park = function (name, price, dinosaurs) {
+const Park = function (name, price) {
   this.name = name;
   this.price = price;
-  this.dinosaurs = dinosaurs;
+  this.dinosaurs = [];
 };
 
 Park.prototype.addDinosaur = function(dinosaur){
@@ -25,7 +25,7 @@ Park.prototype.mostPopular = function(){
 };
 
 Park.prototype.findBySpecies = function(species){
-  let foundDinosaurs = [];
+  const foundDinosaurs = [];
 
   for (let dinosaur of this.dinosaurs) {
     if (dinosaur.species === species){
@@ -38,13 +38,11 @@ Park.prototype.findBySpecies = function(species){
 
 Park.prototype.removeBySpecies = function(species){
 
-  let foundDinosaurs = this.findBySpecies(species)
+  const foundDinosaurs = this.findBySpecies(species)
 
   for (let dinosaur of foundDinosaurs) {
     this.removeDinosaur(dinosaur);
   }
-
-  return this.dinosaurs;
 };
 
 Park.prototype.countVisitorsPerDay = function(){
@@ -72,37 +70,51 @@ Park.prototype.dinosaurDiet = function(){
   //   return `${dinosaur.diet}`;
   // };
 
-  let foundDiet = [];
-  for (let dinosaur of this.dinosaurs) {
-    foundDiet.push(dinosaur.diet)
-  };
-
-  // return foundDiet // returns array of all the diets
-
-  // let dietCounter = foundDiet.reduce(function (allDiets, diet) {
-  //   if (diet in allDiets) {
-  //     allDiets[diet]++;
-  //   } else {
-  //     allDiets[diet] = 1;
-  //   }
-  //   return allDiets;
+  // const foundDiet = [];
+  // for (let dinosaur of this.dinosaurs) {
+  //   foundDiet.push(dinosaur.diet)
+  // };
+  //
+  // // return foundDiet // returns array of all the diets
+  //
+  // // let dietCounter = foundDiet.reduce(function (allDiets, diet) {
+  // //   if (diet in allDiets) {
+  // //     allDiets[diet]++;
+  // //   } else {
+  // //     allDiets[diet] = 1;
+  // //   }
+  // //   return allDiets;
+  // // }, {});
+  // //
+  // // return dietCounter;
+  //
+  // // OR
+  // const dietCounter = foundDiet.reduce(function (allDiets, diet) {
+  // if (typeof allDiets[diet] === 'undefined') {
+  //   allDiets[diet] = 1;
+  // } else {
+  //   allDiets[diet] += 1;
+  // }
+  // return allDiets;
   // }, {});
   //
   // return dietCounter;
 
-  // OR
-  let dietCounter = foundDiet.reduce(function (allDiets, diet) {
-  if (typeof allDiets[diet] === 'undefined') {
-    allDiets[diet] = 1;
-  } else {
-    allDiets[diet] += 1;
+
+  // TO DO WITHOUT ENUMERATION
+const dinosaurDiets = {};
+
+  for (let dino of this.dinosaurs){
+    if (dinosaurDiets[dino.diet]){
+      dinosaurDiets[dino.diet] += 1;
+    } else {
+      dinosaurDiets[dino.diet] = 1;
+    }
   }
-  return allDiets;
-  }, {});
 
-  return dietCounter;
-
-
+  return dinosaurDiets;
+  //
+  //
   // let total = 0;
   // let dietCounter = {};
   // for (let i = 0; i < this.dinosaurs.length; i++) {
@@ -142,6 +154,27 @@ Park.prototype.dinosaurDiet = function(){
 
 
 };
+
+
+// function() {
+// let carnivores = 0;
+// let herbivores = 0;
+// let omnivores = 0;
+// for (let dinosaur of this.dinosaurs){
+//   if (dinosaur.diet === 'carnivore') {
+//     carnivores++
+//   } else if (dinosaur.diet === 'herbivore') {
+//     herbivores++
+//   } else if (dinosaur.diet === 'omnivore') {
+//     omnivores++
+//   };
+// };
+// return {
+//   'carnivore': carnivores;
+//   'herbivore': herbivores;
+//   'omnivore': omnivores;
+// };
+// };
 
 
 
