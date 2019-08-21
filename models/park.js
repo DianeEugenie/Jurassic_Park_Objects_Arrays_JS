@@ -67,14 +67,41 @@ Park.prototype.totalRevenue = function(){
 Park.prototype.dinosaurDiet = function(){
 
 
-  let dietCounter = {};
-  let total = 0;
 
+  // for (let dinosaur of this.dinosaurs) {
+  //   return `${dinosaur.diet}`;
+  // };
+
+  let foundDiet = [];
   for (let dinosaur of this.dinosaurs) {
-    dietCounter[dinosaur.diet] = total;
-
+    foundDiet.push(dinosaur.diet)
   };
+
+  // return foundDiet // returns array of all the diets
+
+  // let dietCounter = foundDiet.reduce(function (allDiets, diet) {
+  //   if (diet in allDiets) {
+  //     allDiets[diet]++;
+  //   } else {
+  //     allDiets[diet] = 1;
+  //   }
+  //   return allDiets;
+  // }, {});
+  //
+  // return dietCounter;
+
+  // OR
+  let dietCounter = foundDiet.reduce(function (allDiets, diet) {
+  if (typeof allDiets[diet] === 'undefined') {
+    allDiets[diet] = 1;
+  } else {
+    allDiets[diet] += 1;
+  }
+  return allDiets;
+  }, {});
+
   return dietCounter;
+
 
   // let total = 0;
   // let dietCounter = {};
